@@ -1,4 +1,4 @@
-## Per-host rate limiting for asynchronous web scraping
+## Rate limiting for asynchronous web scraping
 
 ### Install
 `pip install rate_limiters`
@@ -48,7 +48,3 @@ async def request(url):
 await asyncio.gather(
     *[asyncio.create_task(request(url)) for url in urls])
 ```
-
-### TODO
-add endpoint ID to distributed limiter.
-distinguish that pause is for requests and disable is for the rate limiter
