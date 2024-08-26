@@ -7,7 +7,7 @@ from time import time
 from typing import List, Optional, Tuple, Union
 from urllib.parse import urlsplit
 
-from ezloggers import get_logger
+from quicklogs import get_logger
 
 from .rates import ConstantRate, VariableRate
 
@@ -110,9 +110,11 @@ class RatesController:
         def get_domain_id(l):
             if not (
                 domain_id := self._get_domain_id(
-                    l.match_pattern.pattern
-                    if isinstance(l.match_pattern, re.Pattern)
-                    else l.match_pattern,
+                    (
+                        l.match_pattern.pattern
+                        if isinstance(l.match_pattern, re.Pattern)
+                        else l.match_pattern
+                    ),
                 )
             ):
                 raise ValueError(
